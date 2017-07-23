@@ -14,6 +14,12 @@
 -->
 <configuration>
 
+   <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>master</value>
+        <description>The hostname of the RM.</description>
+    </property>
+
 	<property>
         <name>yarn.scheduler.minimum-allocation-mb</name>
         <value>128</value>
@@ -44,6 +50,6 @@
         <value>4</value>
         <description>Number of CPU cores that can be allocated for containers.</description>
     </property>
-
+    
 </configuration>
 

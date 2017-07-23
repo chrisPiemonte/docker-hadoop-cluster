@@ -1,0 +1,17 @@
+master:
+  build: ./master
+  ports:
+   - "50070:50070"
+   - "50470:50470"
+   - "8088:8088"
+  command: master
+slave:
+  build: ./slave
+  ports:
+   - "50075:50075"
+   - "50475:50475"
+   - "50010:50010"
+   - "50020:50020"
+  links:
+   - master:master
+  command: slave

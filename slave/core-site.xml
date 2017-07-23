@@ -17,11 +17,11 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
+	
 
 	<property>
         <name>fs.defaultFS</name>
-        <value>hdfs://localhost/</value>
+        <value>hdfs://master/</value>
         <description>NameNode URI</description>
     </property>
 
