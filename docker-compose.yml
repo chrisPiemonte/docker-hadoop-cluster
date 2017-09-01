@@ -1,17 +1,45 @@
-master:
-  build: ./master
-  ports:
-   - "50070:50070"
-   - "50470:50470"
-   - "8088:8088"
-  command: master
-slave:
-  build: ./slave
-  ports:
-   - "50075:50075"
-   - "50475:50475"
-   - "50010:50010"
-   - "50020:50020"
-  links:
-   - master:master
-  command: slave
+version: '2'
+
+services:
+  master:
+    image: chrispiemo/hadoop:1.0
+    container_name: hadoop-master
+    hostname: hadoop-master
+    depends_on:
+      - slave1
+      - slave2
+      - slave3
+    networks:
+      - hadoop
+    ports:
+      - "50070:50070"
+      - "8088:8088"
+    command: master
+
+  slave1:
+    image: chrispiemo/hadoop:1.0
+    container_name: hadoop-slave1    
+    hostname: hadoop-slave1
+    networks:
+      - hadoop
+    command: slave
+
+  slave2:
+    image: chrispiemo/hadoop:1.0
+    container_name: hadoop-slave2    
+    hostname: hadoop-slave2
+    networks:
+      - hadoop
+    command: slave
+
+  slave3:
+    image: chrispiemo/hadoop:1.0
+    container_name: hadoop-slave3    
+    hostname: hadoop-slave3
+    networks:
+      - hadoop
+    command: slave
+
+networks:
+  hadoop:
+    external: true
