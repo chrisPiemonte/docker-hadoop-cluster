@@ -8,7 +8,6 @@ services:
     depends_on:
       - slave1
       - slave2
-      - slave3
     networks:
       - hadoop
     ports:
@@ -28,14 +27,6 @@ services:
     image: chrispiemo/hadoop:1.0
     container_name: hadoop-slave2    
     hostname: hadoop-slave2
-    networks:
-      - hadoop
-    command: slave
-
-  slave3:
-    image: chrispiemo/hadoop:1.0
-    container_name: hadoop-slave3    
-    hostname: hadoop-slave3
     networks:
       - hadoop
     command: slave
